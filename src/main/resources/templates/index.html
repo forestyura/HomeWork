@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+    <form action="#" th:action="@{/}" th:object="${financeData}" method="post">
+        <p> Денежные средства <input type="text" th:field="*{cash}" /> </p>
+        <p> Краткосрочные инвестиции <input type="text" th:field="*{shortTermInvestments}" /> </p>
+        <p> Текущие обязательства <input type="text" th:field="*{currentResponsibility}" /> </p>
+        <p> Долгосрочные обязательства <input type="text" th:field="*{longTermResponsibility}" /> </p>
+        <p> Суммарные обязательства <input type="text" th:field="*{totalResponsibility}" /> </p>
+        <p> Текущие активы <input type="text" th:field="*{currentAssets}" /> </p>
+        <p> Суммарные актив <input type="text" th:field="*{totalAssets}" /> </p>
+        <p> Собственный капитал <input type="text" th:field="*{equity}" /> </p>
+        <p> Суммарный акционерный капитал <input type="text" th:field="*{totalShareCapital}" /> </p>
+        <p> Внеоборотные средства <input type="text" th:field="*{noncirculatingFunds}" /> </p>
+
+        <button type="submit" >Расчитать</button>
+    </form>
+
+    <th:block th:if="${financeFormul != null}">
+    <h1> Показатели ликвидности</h1>
+        <p>Коэффициент абсолютной ликвидности <a th:text="${financeFormul.absoluteLiquidityRatio}"></a></p>
+        <p>Коэффициент текущей ликвидности <a th:text="${financeFormul.currentRatio}"></a></p>
+        <p>Чистый оборотный капитал <a th:text="${financeFormul.pureWorkingCapital}"></a></p>
+
+    <h1>Показатели структуры капитала </h1>
+        <p>Коэффициент финансовой независимости <a th:text="${financeFormul.financialIndependence}"></a></p>
+        <p>Суммарные обязательства к активам <a th:text="${financeFormul.totalLiabilitiesAssets}"></a></p>
+        <p>Суммарные обязательства к собственному капиталу <a th:text="${financeFormul.totalLiabilitiesEquity}"></a></p>
+        <p>Долгосрочные обязательства к активам <a th:text="${financeFormul.longTermDebtTotalAssets}"></a></p>
+        <p>Долгосрочные обязательства к необоротным активам <a th:text="${financeFormul.longTermDebtFixedAssets}"></a></p>
+    </th:block>
+</body>
+</html>
